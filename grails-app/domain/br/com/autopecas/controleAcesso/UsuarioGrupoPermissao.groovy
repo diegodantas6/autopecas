@@ -10,12 +10,12 @@ class UsuarioGrupoPermissao implements Serializable {
 
 	private static final long serialVersionUID = 1
 
-	UsuarioGrupo usuarioGrupo
+	UsuarioGrupo grupo
 	Permissao permissao
 
 	UsuarioGrupoPermissao(UsuarioGrupo u, Permissao r) {
 		this()
-		usuarioGrupo = u
+		grupo = u
 		permissao = r
 	}
 
@@ -25,34 +25,34 @@ class UsuarioGrupoPermissao implements Serializable {
 			return false
 		}
 
-		other.usuarioGrupo?.id == usuarioGrupo?.id && other.permissao?.id == permissao?.id
+		other.grupo?.id == grupo?.id && other.permissao?.id == permissao?.id
 	}
 
 	@Override
 	int hashCode() {
 		def builder = new HashCodeBuilder()
-		if (usuarioGrupo) builder.append(usuarioGrupo.id)
+		if (grupo) builder.append(grupo.id)
 		if (permissao) builder.append(permissao.id)
 		builder.toHashCode()
 	}
 
-	static UsuarioGrupoPermissao get(long usuarioGrupoId, long permissaoId) {
-		criteriaFor(usuarioGrupoId, permissaoId).get()
+	static UsuarioGrupoPermissao get(long grupoId, long permissaoId) {
+		criteriaFor(grupoId, permissaoId).get()
 	}
 
-	static boolean exists(long usuarioGrupoId, long permissaoId) {
-		criteriaFor(usuarioGrupoId, permissaoId).count()
+	static boolean exists(long grupoId, long permissaoId) {
+		criteriaFor(grupoId, permissaoId).count()
 	}
 	
-	private static DetachedCriteria criteriaFor(long usuarioGrupoId, long permissaoId) {
+	private static DetachedCriteria criteriaFor(long grupoId, long permissaoId) {
 		UsuarioGrupoPermissao.where {
-			usuarioGrupo == UsuarioGrupo.load(usuarioGrupoId) &&
+			grupo == UsuarioGrupo.load(grupoId) &&
 			permissao == Permissao.load(permissaoId)
 		}
 	}
 
-	static UsuarioGrupoPermissao create(UsuarioGrupo usuarioGrupo, Permissao permissao, boolean flush = false) {
-		def instance = new UsuarioGrupoPermissao(usuarioGrupo, permissao)
+	static UsuarioGrupoPermissao create(UsuarioGrupo grupo, Permissao permissao, boolean flush = false) {
+		def instance = new UsuarioGrupoPermissao(grupo, permissao)
 		instance.save(flush: flush, insert: true)
 		instance
 	}
@@ -60,17 +60,17 @@ class UsuarioGrupoPermissao implements Serializable {
 	static void removeAll(UsuarioGrupo u, boolean flush = false) {
 		if (u == null) return
 
-		UsuarioGrupoPermissao.where { usuarioGrupo == u }.deleteAll()
+		UsuarioGrupoPermissao.where { grupo == u }.deleteAll()
 
 		if (flush) { UsuarioGrupoPermissao.withSession { it.flush() } }
 	}
 
 	static constraints = {
 		permissao validator: { Permissao r, UsuarioGrupoPermissao ur ->
-			if (ur.usuarioGrupo == null || ur.usuarioGrupo.id == null) return
+			if (ur.grupo == null || ur.grupo.id == null) return
 			boolean existing = false
 			UsuarioGrupoPermissao.withNewSession {
-				existing = UsuarioGrupoPermissao.exists(ur.usuarioGrupo.id, r.id)
+				existing = UsuarioGrupoPermissao.exists(ur.grupo.id, r.id)
 			}
 			if (existing) {
 				return 'userRole.exists'

@@ -9,11 +9,15 @@
       <div class="col-md-12">
         <div class="col-middle">
           <div class="text-center text-center">
-            <h1 class="error-number">Autopeças</h1>
-            <h2>Página institucional em desenvolvimento</h2>
-            <div class="mid_center">
-              <h3><a href="${createLink(controller: 'login')}">Entrar</a></h3>
-            </div>
+            <h1 class="error-number">404</h1>
+            <h2>Página não encontrada</h2>
+			<p>Entre em contato com o administrador para obter permissão.</p>
+
+			<div class="mid_center">
+				<h3>
+					<a href="${createLink(uri: '/menu')}">Voltar</a>
+				</h3>
+			</div>
           </div>
         </div>
       </div>
