@@ -16,10 +16,14 @@
     <asset:stylesheet src="fontawesome/fontawesome.css"/>
     <!-- NProgress -->
     <asset:stylesheet src="nprogress/nprogress.css"/>
+    <!-- PNotify -->
+    <asset:stylesheet src="pnotify/pnotify.css"/>
+    <!-- Jquery Confirm -->
+    <asset:stylesheet src="jquery-confirm/jquery-confirm.min.css"/>
     <!-- Gentelella -->
     <asset:stylesheet src="gentelella/gentelella.css"/>
-    
-    <g:layoutHead/>
+    <!-- Custom -->
+    <asset:stylesheet src="application.css"/>
   </head>
 
   <body class="nav-md">
@@ -44,7 +48,7 @@
               	<asset:image src="user.jpg" class="img-circle profile_img"/>
               </div>
               <div class="profile_info">
-                <span>Bem vindo,</span>
+                <span>Bem vindo</span>
                 <h2>
                   <sec:loggedInUserInfo field="username" />
                 </h2>
@@ -128,11 +132,21 @@
     <asset:javascript src="fastclick/fastclick.js"/>
     <!-- NProgress -->
     <asset:javascript src="nprogress/nprogress.js"/>
+    <!-- PNotify -->
+    <asset:javascript src="pnotify/pnotify.js"/>
+    <!-- Jquery Confirm -->
+    <asset:javascript src="jquery-confirm/jquery-confirm.min.js"/>
+    <!-- Jquery Data Tables -->
+    <asset:javascript src="jquery-dataTables/jquery-dataTables.js"/>
     <!-- Parsley -->
     <asset:javascript src="parsley/parsley.js"/>
     <asset:javascript src="parsley/i18n/pt-br.js"/>
     <!-- Gentelella -->
     <asset:javascript src="gentelella/gentelella.js"/>
+    <!-- Custom -->
+    <asset:javascript src="application.js"/>
+
+    <g:layoutHead/>
 
   </body>
 </html>
