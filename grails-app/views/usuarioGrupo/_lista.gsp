@@ -3,7 +3,7 @@
 		class="table table-striped responsive-utilities jambo_table">
 		<thead>
 			<tr class="headings">
-				<th style="width: 89%;">Nome</th>
+				<th style="width: 90%;">Nome</th>
 				<th class=" no-link last"><span class="nobr">Ações</span></th>
 			</tr>
 		</thead>

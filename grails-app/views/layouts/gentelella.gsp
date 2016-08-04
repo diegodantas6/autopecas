@@ -20,6 +20,8 @@
     <asset:stylesheet src="pnotify/pnotify.css"/>
     <!-- Jquery Confirm -->
     <asset:stylesheet src="jquery-confirm/jquery-confirm.min.css"/>
+    <!-- Select2 -->
+    <asset:stylesheet src="select2/select2.min.css"/>
     <!-- Gentelella -->
     <asset:stylesheet src="gentelella/gentelella.css"/>
     <!-- Custom -->
@@ -141,6 +143,9 @@
     <!-- Parsley -->
     <asset:javascript src="parsley/parsley.js"/>
     <asset:javascript src="parsley/i18n/pt-br.js"/>
+    <!-- Select2 -->
+    <asset:javascript src="select2/select2.full.js"/>
+    <asset:javascript src="select2/i18n/pt-br.js"/>
     <!-- Gentelella -->
     <asset:javascript src="gentelella/gentelella.js"/>
     <!-- Custom -->

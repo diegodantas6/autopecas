@@ -7,17 +7,23 @@ import grails.plugin.springsecurity.annotation.Secured
 import org.codehaus.groovy.grails.web.json.JSONArray
 import org.codehaus.groovy.grails.web.json.JSONObject
 
+
 @Secured("ROLE_UPDATE_PERMISSAO_ACESSO")
 class PermissaoAcessoController {
+	
+	def mensagemService
 
 	def index() {
+		def grupos = UsuarioGrupo.listOrderByNome()
+		
+		render view: "index", model: [grupos: grupos] 
 	}
 
 	private String getTreeViewDataSemGrupoMenu( UsuarioGrupo usuarioGrupo ) {
 
 		JSONArray retorno = new JSONArray()
 
-		List listPermissaoGrupo = PermissaoGrupo.list(sort: "nome")
+		List listPermissaoGrupo = PermissaoGrupo.listOrderByNome()
 
 		for (permissaoGrupo in listPermissaoGrupo) {
 
@@ -25,7 +31,7 @@ class PermissaoAcessoController {
 
 			JSONArray retornoAuxItems2 = new JSONArray()
 
-			List listPermissao = Permissao.findAllByPermissaoGrupo(permissaoGrupo, [sort: "descricao"])
+			List listPermissao = Permissao.findAllByGrupo(permissaoGrupo, [sort: "descricao"])
 
 			for (permissao in listPermissao) {
 
@@ -44,7 +50,7 @@ class PermissaoAcessoController {
 
 		JSONArray retorno = new JSONArray()
 
-		List listPermissaoGrupoMenu = PermissaoGrupoMenu.list(sort: "nome")
+		List listPermissaoGrupoMenu = PermissaoGrupoMenu.listOrderByNome()
 
 		for (permissaoGrupoMenu in listPermissaoGrupoMenu) {
 
@@ -52,7 +58,7 @@ class PermissaoAcessoController {
 
 			JSONArray retornoAuxItems1 = new JSONArray()
 
-			List listPermissaoGrupo = PermissaoGrupo.findAllByPermissaoGrupoMenu(permissaoGrupoMenu, [sort: "nome"])
+			List listPermissaoGrupo = PermissaoGrupo.findAllByMenu(permissaoGrupoMenu, [sort: "nome"])
 
 			for (permissaoGrupo in listPermissaoGrupo) {
 
@@ -60,7 +66,7 @@ class PermissaoAcessoController {
 
 				JSONArray retornoAuxItems2 = new JSONArray()
 
-				List listPermissao = Permissao.findAllByPermissaoGrupo(permissaoGrupo, [sort: "descricao"])
+				List listPermissao = Permissao.findAllByGrupo(permissaoGrupo, [sort: "descricao"])
 
 				for (permissao in listPermissao) {
 
@@ -87,7 +93,7 @@ class PermissaoAcessoController {
 		jPermissao.putAt("id", "'" + permissao.id + "'")
 		jPermissao.putAt("text", "'" + permissao.descricao + "'")
 
-		if ( UsuarioGrupoPermissao.findByUsuarioGrupoAndPermissao(usuarioGrupo, permissao) == null ) {
+		if ( UsuarioGrupoPermissao.findByGrupoAndPermissao(usuarioGrupo, permissao) == null ) {
 
 			jPermissao.putAt("checked", false)
 		} else {
@@ -133,10 +139,10 @@ class PermissaoAcessoController {
 			//String retorno = getTreeViewDataSemGrupoMenu( usuarioGrupo )
 			String retorno = getTreeViewDataComGrupoMenu( usuarioGrupo )
 
-			render(template: "form", model: [retorno: retorno])
+			render template: "form", model: [retorno: retorno]
 		} else {
 
-			render(template: "form", model: [retorno: "{}"])
+			render template: "form", model: [retorno: "{}"]
 		}
 	}
 
@@ -147,13 +153,14 @@ class PermissaoAcessoController {
 		UsuarioGrupo usuarioGrupo = UsuarioGrupo.get(params.grupoUsuario)
 
 		if (usuarioGrupo == null) {
+			
+			retorno = mensagemService.getMensagem("Favor serlecionar o Grupo Usuário!", false)
 
-			retorno = UtilsMensagem.getMensagem("Favor serlecionar o Grupo Usuário!", NotifyType.ERROR)
 		} else {
 
 			UsuarioGrupoPermissao.removeAll(usuarioGrupo, true)
 
-			List usuarios = Usuario.findAllByUsuarioGrupo(usuarioGrupo)
+			List usuarios = Usuario.findAllByGrupo(usuarioGrupo)
 
 			for (usuario in usuarios) {
 
@@ -177,7 +184,7 @@ class PermissaoAcessoController {
 				}
 			}
 
-			retorno = UtilsMensagem.getMensagem("Salvo com sucesso!", NotifyType.SUCCESS)
+			retorno = mensagemService.getMensagem("Salvo com sucesso!")
 		}
 
 		render retorno as JSON

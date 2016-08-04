@@ -3,17 +3,16 @@
 	<ul class="nav navbar-right panel_toolbox"></ul>
 	<div class="clearfix"></div>
 </div>
+
 <div class="x_content">
 	<br />
+	
 	<form id="form" class="form-horizontal form-label-left">
+
 		<div class="form-group">
-			<label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Descrição<span
-				class="required">*</span>
-			</label>
+			<label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Nome *</label>
 			<div class="col-md-6 col-sm-6 col-xs-12">
-				<input type="text" id="nome" name="usuarioGrupo.nome" required="required"
-					class="form-control col-md-7 col-xs-12" maxlength="50"
-					value="${usuarioGrupo.nome}" <g:if test="${!editable}">disabled</g:if>/>
+				<input type="text" id="nome" name="usuarioGrupo.nome" required="required" class="form-control col-md-7 col-xs-12" maxlength="50" value="${usuarioGrupo.nome}" <g:if test="${!editable}">disabled</g:if>/>
 			</div>
 		</div>
 
@@ -31,6 +30,7 @@
 
 			</div>
 		</div>
+
 		<input type="hidden" name="id" value="${usuarioGrupo.id}" />
 		<input type="hidden" name="version" value="${usuarioGrupo.version}" />
 

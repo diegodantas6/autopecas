@@ -9,12 +9,7 @@ class UsuarioGrupoController {
 	def messageSource
 	def springSecurityService
 
-//	@Secured([
-//		"ROLE_CREATE_USUARIO_GRUPO",
-//		"ROLE_READ_USUARIO_GRUPO",
-//		"ROLE_UPDATE_USUARIO_GRUPO",
-//		"ROLE_DELETE_USUARIO_GRUPO"
-//	])
+	@Secured(["ROLE_CREATE_USUARIO_GRUPO", "ROLE_READ_USUARIO_GRUPO", "ROLE_UPDATE_USUARIO_GRUPO", "ROLE_DELETE_USUARIO_GRUPO"])
     def index() { 
 	}
 	

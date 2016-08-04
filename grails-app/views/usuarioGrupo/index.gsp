@@ -19,6 +19,8 @@
 
 						<div class="x_title">
 
+							<h2>Lista</h2>
+
 							<input type="button" class="btn btn-primary pull-right" value="Novo" onclick="javascript: incluir()">
 
 							<ul class="nav navbar-right panel_toolbox"></ul>
