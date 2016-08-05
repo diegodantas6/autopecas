@@ -1,10 +1,9 @@
 <div class="x_content">
-	<table id="example"
-		class="table table-striped responsive-utilities jambo_table">
+	<table id="example"	class="table table-striped table-bordered jambo_table">
 		<thead>
 			<tr class="headings">
-				<th style="width: 90%;">Nome</th>
-				<th class=" no-link last"><span class="nobr">Ações</span></th>
+				<th style="width: 100%;">Nome</th>
+				<th style="width: 80px;">Ações</th>
 			</tr>
 		</thead>
 

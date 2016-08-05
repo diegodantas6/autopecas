@@ -55,15 +55,24 @@ function show(valor, texto) {
 }
 
 function formatTable() {
+//	$('#example').dataTable({
+//		"oLanguage" : {
+//			"sSearch" : " "
+//		},
+//		"aoColumnDefs" : [{
+//			'bSortable' : false,
+//			'aTargets' : [ -1 ]
+//		}],
+//		"aaSorting": [],
+//		"sPaginationType" : "full_numbers"
+//	});
+	
 	$('#example').dataTable({
-		"oLanguage" : {
-			"sSearch" : " "
-		},
+		"scrollX": true,
 		"aoColumnDefs" : [{
 			'bSortable' : false,
 			'aTargets' : [ -1 ]
 		}],
-		"aaSorting": [],
-		"sPaginationType" : "full_numbers"
-	});
+		"aaSorting": []
+	})
 }

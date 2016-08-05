@@ -20,6 +20,8 @@
     <asset:stylesheet src="pnotify/pnotify.css"/>
     <!-- Jquery Confirm -->
     <asset:stylesheet src="jquery-confirm/jquery-confirm.min.css"/>
+    <!-- Jquery Data Tables -->
+    <asset:stylesheet src="jquery-dataTables/dataTables.bootstrap.css"/>
     <!-- Select2 -->
     <asset:stylesheet src="select2/select2.min.css"/>
     <!-- Gentelella -->
@@ -139,7 +141,8 @@
     <!-- Jquery Confirm -->
     <asset:javascript src="jquery-confirm/jquery-confirm.min.js"/>
     <!-- Jquery Data Tables -->
-    <asset:javascript src="jquery-dataTables/jquery-dataTables.js"/>
+    <asset:javascript src="jquery-dataTables/jquery.dataTables.js"/>
+    <asset:javascript src="jquery-dataTables/dataTables.bootstrap.js"/>
     <!-- Parsley -->
     <asset:javascript src="parsley/parsley.js"/>
     <asset:javascript src="parsley/i18n/pt-br.js"/>
